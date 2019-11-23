@@ -7,7 +7,7 @@ module Shlex
   attach_function :splitter, [:string], :string
 
   def self.split(str)
-    Shlex.splitter(str)
+    JSON.load(Shlex.splitter(str))
   end
 end
 
