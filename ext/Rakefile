@@ -2,6 +2,12 @@ task default: "compile"
 
 
 task :compile do
-  system("go build -o shlex.so -buildmode=c-shared shlex.go") \
-    or raise "Missing go? Or didn't compile"
+  linux = (`uname`.strip.downcase == "linux")
+  if lunux
+    system("CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o shlex.so -buildmode=c-shared shlex.go") \
+      or raise "Missing go? Or didn't compile"
+  else
+    system("go build -o shlex.so -buildmode=c-shared shlex.go") \
+      or raise "Missing go? Or didn't compile"
+  end
 end
