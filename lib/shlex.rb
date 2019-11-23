@@ -1,5 +1,6 @@
 require 'ffi'
 require 'json'
+require 'ostruct'
 
 module Shlex
   extend FFI::Library
@@ -7,7 +8,8 @@ module Shlex
   attach_function :splitter, [:string], :string
 
   def self.split(str)
-    JSON.load(Shlex.splitter(str))
+    data = JSON.load(Shlex.splitter(str))
+    OpenStruct.new({args: data['Args'], error: data['Error']})
   end
 end
 
