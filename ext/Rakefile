@@ -2,5 +2,6 @@ task default: "compile"
 
 
 task :compile do
-  system("go build -o shlex.so -buildmode=c-shared shlex.go")
+  system("go build -o shlex.so -buildmode=c-shared shlex.go") \
+    or raise "Missing go? Or didn't compile"
 end
