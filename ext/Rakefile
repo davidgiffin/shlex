@@ -1,0 +1,6 @@
+task default: "compile"
+
+
+task :compile do
+  system("go build -o shlex.so -buildmode=c-shared shlex.go")
+end
