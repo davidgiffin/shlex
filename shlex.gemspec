@@ -7,5 +7,6 @@ Gem::Specification.new do |s|
   s.authors = ['David Giffin']
   s.email   = 'david@giffin.org'
   s.add_dependency 'rake'
-  s.add_dependency 'ffi-compiler'
+  s.add_dependency 'json'
+  s.add_dependency 'ostruct'
 end
